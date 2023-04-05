@@ -8,3 +8,5 @@ mvnw
 package-lock.json
 README.md
 .gitignore
+.angular
+node
