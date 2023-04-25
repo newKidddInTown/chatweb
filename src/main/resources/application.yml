@@ -1,6 +1,2 @@
-spring:
-  data:
-    mongodb:
-      database: chat
-      host : 103.124.94.6
-      port : 27017
+server:
+  port: 8888
