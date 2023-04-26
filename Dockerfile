@@ -1,13 +1,32 @@
-FROM node:latest as build
-WORKDIR /demoapp
-COPY ./ /demoapp
+FROM node:18-alpine AS node
+
+WORKDIR /app
+
+COPY package*.json ./
 
 RUN npm install
-RUN ng build
 
-FROM maven:3.9.1-eclipse-temurin-11 as build
+COPY . .
+
+RUN npm run build
+
+
+FROM maven:latest AS maven
+
+WORKDIR /app
+
+COPY --from=node /app/dist /app
+
+COPY pom.xml ./
+
 RUN mvn package -DskipTests
 
-FROM java:8u111-jdk-alpine as build
-ENTRYPOINT ["java", "-jar", "/target/*.jar"]
+
+FROM openjdk:8u111-jdk
+
+WORKDIR /app
+
+COPY --from=maven /app/target/*.jar /app
+
+CMD ["java", "-jar", "demo.jar"]
 
