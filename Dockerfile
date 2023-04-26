@@ -12,7 +12,7 @@ WORKDIR app
 
 COPY --from=node chatweb/target ./
 COPY pom.xml ./
-COPY /src ./
+COPY src/ ./
 RUN mvn install
 RUN mvn package -DskipTests
 
