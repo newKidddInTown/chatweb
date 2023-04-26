@@ -1,10 +1,9 @@
 FROM node:18-alpine AS node
 
-COPY ["web", "angular.json", "package.json", "./"]
+COPY . /
 
 RUN npm install
 RUN npm run build
-
 
 FROM maven:latest AS maven
 

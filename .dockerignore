@@ -1,0 +1,9 @@
+.idea
+.mvn
+node_modules
+.dockerignore
+.editorconfig
+.gitignore
+Jenkinsfile
+mvnw
+mvnw.cmd
