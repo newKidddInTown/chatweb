@@ -6,7 +6,9 @@ COPY ./ /demoapp
 
 RUN npm install
 
+RUN ng build
+
 RUN mvn package -DskipTests
 
-
+ENTRYPOINT ["java", "-jar", "/target/*.jar"]
 
