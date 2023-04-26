@@ -1,4 +1,4 @@
-package jp.mrduc.me.chatweb;
+package jp.mrduc.me;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
