@@ -1,7 +1,7 @@
+FROM node:latest as build
 WORKDIR /demoapp
 COPY ./ /demoapp
 
-FROM node:latest as build
 RUN npm install
 RUN ng build
 
