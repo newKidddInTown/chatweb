@@ -9,7 +9,7 @@ RUN npm run build
 
 FROM maven:latest AS maven
 
-COPY --from=node /target ./
+COPY --from=node chatweb/target ./
 COPY pom.xml ./
 COPY src ./
 
