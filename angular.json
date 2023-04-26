@@ -14,18 +14,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "target/classes/static",
-            "index": "src/main/web/index.html",
-            "main": "src/main/web/main.ts",
+            "index": "web/index.html",
+            "main": "web/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/main/web/favicon.ico",
-              "src/main/web/assets"
             ],
             "styles": [
-              "src/main/web/styles.css"
+              "web/styles.css"
             ],
             "scripts": []
           },
@@ -83,11 +81,9 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/main/web/favicon.ico",
-              "src/main/web/assets"
             ],
             "styles": [
-              "src/main/web/styles.css"
+              "web/styles.css"
             ],
             "scripts": []
           }
