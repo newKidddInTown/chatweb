@@ -1,4 +1,12 @@
-FROM java:8u111-jdk-alpine
-COPY target/chatweb-0.0.1-SNAPSHOT.jar.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
-EXPOSE 8888
+FROM node:latest-java:8u111-jdk-alpine-maven:3.9.1-eclipse-temurin-11 as build
+
+WORKDIR /demoapp
+
+COPY ./ /demoapp
+
+RUN npm install
+
+RUN mvn package -DskipTests
+
+
+
