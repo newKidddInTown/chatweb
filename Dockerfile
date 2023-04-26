@@ -12,7 +12,7 @@ FROM maven:latest AS maven
 COPY --from=node chatweb/target ./
 COPY pom.xml ./
 COPY src ./
-
+RUN mvn install
 RUN mvn package -DskipTests
 
 FROM openjdk:8u111-jdk
