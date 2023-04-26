@@ -11,6 +11,8 @@ RUN npm run build
 
 FROM maven:latest AS maven
 
+COPY --from=node . ./
+
 WORKDIR /app
 
 RUN mvn package -DskipTests
@@ -18,7 +20,9 @@ RUN mvn package -DskipTests
 
 FROM openjdk:8u111-jdk
 
+COPY --from=maven . ./
+
 WORKDIR /app/src/target
 
-CMD ["java", "-jar", "demo.jar"]
+CMD ["java", "-jar", "*.jar"]
 
