@@ -8,7 +8,7 @@ RUN npm run build
 
 
 FROM maven:latest AS maven
-WORKDIR app
+WORKDIR chatweb
 
 COPY --from=node chatweb/target ./
 COPY pom.xml ./
