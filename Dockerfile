@@ -1,21 +1,23 @@
 FROM node:18-alpine AS node
+WORKDIR chatweb
 
-COPY . /chatweb
+COPY . ./
 
-RUN -f /chatweb npm install
-RUN -f /chatweb npm run build
+RUN npm install
+RUN npm run build
+
 
 FROM maven:latest AS maven
 
-COPY --from=node chatweb/target ./chatweb
-COPY pom.xml ./chatweb
-COPY src ./chatweb
+COPY --from=node /target ./
+COPY pom.xml ./
+COPY src ./
 
 RUN mvn package -DskipTests
 
 FROM openjdk:8u111-jdk
 
-COPY --from=maven chatweb/target/*.jar ./app.jar
+COPY --from=maven /target/*.jar ./app.jar
 
 CMD ["java", "-jar", "app.jar"]
 
